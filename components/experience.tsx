@@ -35,12 +35,12 @@ const experiences = [
 	},
 	{
 		title: "Founding Software Engineer",
-		company: "JobMatch-AI",
+		company: "Mutu-AI",
 		logo: "/images/logos/Arizona_State_University_seal.svg.png",
 		location: "Tempe, Arizona (Self-Employed)",
 		startYear: "2025",
 		endYear: "Present",
-		url: "https://job-hunt-frontend-etejhvrjsq-ue.a.run.app/",
+		url: "https://mutu.dev",
 		highlights: [
 			"Architected a hybrid search platform combining Elasticsearch (BM25), FAISS (ANN semantic search), and Neo4j (knowledge graph traversal) — serving <82ms median latency via GCP Cloud Run with 30+ FastAPI endpoints and a live waitlist across 2 countries",
 			"Built end-to-end: resume parsing, LLM-based job description alignment, explainable match scoring, and an invite system with custom email templates — deployed full-stack with React frontend and Dockerized backend",
@@ -54,7 +54,7 @@ const experiences = [
 					venue: "arXiv — March 2026 · Selected at ACL Demo 2026 (San Diego)"
 				}
 			],
-			website: "https://job-hunt-frontend-etejhvrjsq-ue.a.run.app/",
+			website: "https://mutu.dev",
 			mcpPackage: "https://mayank-glitch-cpu.github.io/JobSync-Service/"
 	},
 	{
