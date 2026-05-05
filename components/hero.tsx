@@ -1,10 +1,11 @@
 // src/components/Hero.tsx
 "use client";
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Linkedin, Github, Twitter, Calendar, FileText } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { ArrowRight, Mail, Linkedin, Github, Twitter, Calendar, FileText, Brain, Code2 } from 'lucide-react';
 import { HeroBackground } from './hero-background';
 
 // Instagram icon component
@@ -154,6 +155,7 @@ const socialLinks = [
 ];
 
 const Hero: React.FC = () => {
+	const [resumeDialogOpen, setResumeDialogOpen] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
@@ -245,11 +247,49 @@ const Hero: React.FC = () => {
 							<Button
 								variant="link"
 								className="p-0 h-auto text-base flex items-center gap-2"
-								onClick={() => window.open('https://drive.google.com/file/d/1lZAvZRcaVp4CGlUEMGavoiRyPyvnqYdh/view?usp=sharing', '_blank')}
+								onClick={() => setResumeDialogOpen(true)}
 							>
 								<FileText className="h-4 w-4" />
 								View Resume
 							</Button>
+							<Dialog open={resumeDialogOpen} onOpenChange={setResumeDialogOpen}>
+								<DialogContent className="sm:max-w-md">
+									<DialogHeader>
+										<DialogTitle>Choose Resume Focus</DialogTitle>
+										<DialogDescription>
+											Select the version that best matches what you&apos;re looking for.
+										</DialogDescription>
+									</DialogHeader>
+									<div className="flex flex-col gap-3 pt-2">
+										<Button
+											className="w-full justify-start gap-3 h-14 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700"
+											onClick={() => {
+												window.open('https://drive.google.com/file/d/18oqbveUFCdrqEJ43zn5WjywcEDEfiRCR/view?usp=sharing', '_blank');
+												setResumeDialogOpen(false);
+											}}
+										>
+											<Brain className="h-5 w-5 shrink-0" />
+											<div className="text-left">
+												<div className="font-semibold">ML / AI Focused</div>
+												<div className="text-xs opacity-80">Machine learning, LLMs, data science roles</div>
+											</div>
+										</Button>
+										<Button
+											className="w-full justify-start gap-3 h-14 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700"
+											onClick={() => {
+												window.open('https://drive.google.com/file/d/1jBfOtoAucMhpZfWb1JTshj0lGN-xuEP9/view?usp=sharing', '_blank');
+												setResumeDialogOpen(false);
+											}}
+										>
+											<Code2 className="h-5 w-5 shrink-0" />
+											<div className="text-left">
+												<div className="font-semibold">SDE Focused</div>
+												<div className="text-xs opacity-80">Software engineering, full-stack, backend roles</div>
+											</div>
+										</Button>
+									</div>
+								</DialogContent>
+							</Dialog>
 
 							<Button
 								size="lg"
