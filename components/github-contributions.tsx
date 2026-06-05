@@ -12,7 +12,7 @@ type ContributionDay = {
 
 type ContributionWeek = ContributionDay[];
 
-const GITHUB_USERNAME = 'Mayank-glitch-cpu';
+const GITHUB_USERNAME = 'vasupradharamac';
 
 // Generate available years (current year and past 4 years)
 const getAvailableYears = () => {

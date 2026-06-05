@@ -7,32 +7,32 @@ const contactLinks = [
 	{
 		icon: Mail,
 		label: "Email",
-		href: "https://mail.google.com/mail/?view=cm&fs=1&to=vyasmayank963@gmail.com",
+		href: "https://mail.google.com/mail/?view=cm&fs=1&to=vasupradha.1011@gmail.com",
 	},
 	{
 		icon: Phone,
 		label: "Call",
-		href: "tel:+16025171664",
+		href: "tel:+919025352164",
 	},
 	{
 		icon: MapPin,
-		label: "Tempe, AZ",
+		label: "Bangalore, IN",
 		href: "#",
 	},
 	{
 		icon: Github,
 		label: "GitHub",
-		href: "https://github.com/mayank-glitch-cpu",
+		href: "https://github.com/vasupradharamac",
 	},
 	{
 		icon: Linkedin,
 		label: "LinkedIn",
-		href: "https://www.linkedin.com/in/mayank-vyas-369796213/",
+		href: "https://www.linkedin.com/in/vasupradha-r/",
 	},
 	{
 		icon: Twitter,
 		label: "Twitter",
-		href: "https://x.com/MayankV53812200",
+		href: "https://x.com/RVasupradha",
 	},
 ];
 
@@ -70,7 +70,7 @@ const Contact = () => (
 		</div>
 		<div className="text-center text-sm text-muted-foreground mt-4">
 			Made with{" "}
-			<span className="text-red-500">♥</span> by Mayank
+			<span className="text-red-500">♥</span> by Vasupradha R
 		</div>
 	</footer>
 );

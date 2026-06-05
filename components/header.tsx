@@ -16,7 +16,7 @@ const Header = () => {
       // Check if page is scrolled
       setIsScrolled(window.scrollY > 50)
 
-      const sections = ['hero', 'about', 'education', 'experience', 'projects', 'testimonials', 'dashboards', 'videos', 'contact']
+      const sections = ['hero', 'about', 'experience', 'projects', 'dashboards', 'videos', 'contact']
       const currentSection = sections.find(section => {
         const element = document.getElementById(section)
         if (element) {
@@ -37,7 +37,7 @@ const Header = () => {
 
   if (!mounted) return null
 
-  const navItems = ['Home', 'About', 'Education', 'Experience', 'Projects', 'Testimonials']
+  const navItems = ['Home', 'About', 'Experience', 'Projects'] // "Education", "Testimonials"
 
   return (
     <motion.header
@@ -53,7 +53,7 @@ const Header = () => {
         <div className="flex items-center justify-between py-4">
           {/* Left: Name */}
           <a href="#" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
-            Mayank Vyas
+            Vasupradha R
           </a>
 
           {/* Center: Navigation */}
@@ -74,7 +74,7 @@ const Header = () => {
           {/* Right: Contact Me button + Mobile menu */}
           <div className="flex items-center space-x-2">
             <a
-              href="mailto:vyasmayank963@gmail.com"
+              href="mailto:vasupradha.1011@gmail.com"
               className="hidden md:flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
               <Mail className="h-4 w-4" />
@@ -112,7 +112,7 @@ const Header = () => {
                 </a>
               ))}
               <a
-                href="mailto:vyasmayank963@gmail.com"
+                href="mailto:vasupradha.1011@gmail.com"
                 className="mt-4 flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >

@@ -146,20 +146,20 @@ const Scene = ({ variant = 'experience' }: SceneProps) => {
   const particleConfigs = useMemo(() => {
     const configs = {
       experience: [
-        { position: [-4, 2, -3] as [number, number, number], scale: 0.2, color: "#8B5CF6", speed: 0.7, type: 'sphere' as const },
+        { position: [-4, 2, -3] as [number, number, number], scale: 0.2, color: "#84A98C", speed: 0.7, type: 'sphere' as const },
         { position: [4, -1, -4] as [number, number, number], scale: 0.18, color: "#06B6D4", speed: 1.0, type: 'octahedron' as const },
         { position: [-2, -2.5, -2] as [number, number, number], scale: 0.22, color: "#10B981", speed: 0.6, type: 'sphere' as const },
         { position: [3, 1.5, -5] as [number, number, number], scale: 0.16, color: "#F59E0B", speed: 0.9, type: 'box' as const },
       ],
       projects: [
         { position: [-3.5, 1.5, -3] as [number, number, number], scale: 0.22, color: "#06B6D4", speed: 0.8, type: 'octahedron' as const },
-        { position: [3.5, -1.5, -4] as [number, number, number], scale: 0.2, color: "#8B5CF6", speed: 0.9, type: 'sphere' as const },
+        { position: [3.5, -1.5, -4] as [number, number, number], scale: 0.2, color: "#84A98C", speed: 0.9, type: 'sphere' as const },
         { position: [-2.5, -1.5, -2] as [number, number, number], scale: 0.18, color: "#EF4444", speed: 0.7, type: 'box' as const },
         { position: [2, 2, -5] as [number, number, number], scale: 0.24, color: "#10B981", speed: 0.6, type: 'torus' as const },
       ],
       hackathons: [
         { position: [-4, 1, -3] as [number, number, number], scale: 0.24, color: "#F59E0B", speed: 0.75, type: 'octahedron' as const },
-        { position: [4, -2, -4] as [number, number, number], scale: 0.18, color: "#8B5CF6", speed: 0.85, type: 'sphere' as const },
+        { position: [4, -2, -4] as [number, number, number], scale: 0.18, color: "#84A98C", speed: 0.85, type: 'sphere' as const },
         { position: [-2, -2, -2] as [number, number, number], scale: 0.2, color: "#06B6D4", speed: 0.65, type: 'torus' as const },
         { position: [2.5, 2.5, -5] as [number, number, number], scale: 0.22, color: "#EF4444", speed: 1.0, type: 'box' as const },
       ],

@@ -6,19 +6,18 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import Image from 'next/image'
 import {
+  SiOpenai,
+  SiTerraform,
+  SiVercel,
+  SiTypescript,
   SiPython,
   SiJavascript,
-  SiTypescript,
-  SiCplusplus,
-  SiTensorflow,
-  SiPytorch,
   SiReact,
   SiDjango,
   SiMongodb,
   SiPostgresql,
   SiDocker,
   SiKubernetes,
-  SiAmazon,
   SiApachekafka,
   SiGrafana,
   SiGit,
@@ -30,12 +29,15 @@ import {
   SiGooglebigquery,
   SiGithubactions,
   SiJenkins,
-  SiMicrosoftazure,
-  SiNvidia,
+  SiAnthropic,
+  SiClaude,
 } from "react-icons/si";
-import { DiJava } from 'react-icons/di'
+import { FaAws } from "react-icons/fa";
+import { LuBrainCircuit } from "react-icons/lu";
+import { TbDatabaseSearch, TbTopologyRing, TbWaveSine } from "react-icons/tb";
+import { FiDatabase } from "react-icons/fi";
 import { HeroBackground } from './hero-background';
-import { MapPin, GraduationCap, Briefcase, Heart, Camera, Mountain, Gamepad2, Trophy, Github, ExternalLink, CalendarDays } from 'lucide-react'
+import { MapPin, GraduationCap, Briefcase, Heart, Camera, Mountain, Gamepad2, Coffee, Trophy, Github, ExternalLink, CalendarDays, Mail } from 'lucide-react'
 
 // Skills data organized by category
 type Skill = {
@@ -45,19 +47,19 @@ type Skill = {
 
 const programmingSkills: Skill[] = [
   { icon: SiPython, name: "Python" },
-  { icon: DiJava, name: "Java" },
   { icon: SiTypescript, name: "TypeScript" },
-  { icon: SiCplusplus, name: "C++" },
   { icon: SiJavascript, name: "JavaScript" },
 ];
 
-const aiMlSkills: Skill[] = [
-  { icon: SiPytorch, name: "PyTorch" },
-  { icon: SiTensorflow, name: "TensorFlow" },
-  { icon: SiPytorch, name: "LangGraph" },
-  { icon: SiPytorch, name: "FAISS" },
-  { icon: SiPytorch, name: "LoRA/PEFT" },
-  { icon: SiNvidia, name: "CUDA" },
+const aiLlmSkills: Skill[] = [
+  { icon: LuBrainCircuit, name: "LangGraph & LangChain"},
+  { icon: TbTopologyRing, name: "Knowledge Graphs"},
+  { icon: TbDatabaseSearch, name: "Pinecone"},
+  { icon: TbWaveSine, name: "Voice AI (LiveKit, Sarvam)"},
+  { icon: SiAnthropic, name: "Athropic API"},
+  { icon: SiOpenai, name: "OpenAI API"},
+  { icon: SiClaude, name: "Claude Code"}
+
 ];
 
 const webFrameworkSkills: Skill[] = [
@@ -70,20 +72,19 @@ const webFrameworkSkills: Skill[] = [
 
 const infraSkills: Skill[] = [
   { icon: SiDocker, name: "Docker" },
-  { icon: SiKubernetes, name: "Kubernetes" },
-  { icon: SiAmazon, name: "AWS" },
-  { icon: SiMicrosoftazure, name: "Azure" },
+  { icon: FaAws, name: "AWS" },
   { icon: SiApachekafka, name: "Kafka" },
-  { icon: SiGrafana, name: "Grafana" },
   { icon: SiJenkins, name: "Jenkins" },
   { icon: SiGithubactions, name: "GitHub Actions" },
 ];
 
 const databaseSkills: Skill[] = [
   { icon: SiMongodb, name: "MongoDB" },
+  { icon: FiDatabase, name: "DynamoDB" },
   { icon: SiPostgresql, name: "PostgreSQL" },
   { icon: SiRedis, name: "Redis" },
-  { icon: SiGooglebigquery, name: "BigQuery" },
+  { icon: TbDatabaseSearch, name: "Pinecone"}
+  
 ];
 
 const toolsSkills: Skill[] = [
@@ -94,66 +95,118 @@ const toolsSkills: Skill[] = [
 // Photo gallery data
 const travelPhotos = [
   {
-    src: "/images/me/canyon.jpeg",
-    alt: "Grand Canyon",
-    caption: "Grand Canyon, Arizona",
+    src: "/images/me/Khao Lak sunset.jpeg",
+    alt: "Sunset in Tropics",
+    caption: "Khao Lak, Thailand",
     size: "large" as const,
   },
   {
-    src: "/images/headshot/mayank_vyas.jpeg",
-    alt: "Mayank Vyas",
-    caption: "That's me!",
-    size: "small" as const,
-  },
-  {
-    src: "/images/me/goldenGate.jpeg",
-    alt: "Golden Gate Bridge",
-    caption: "San Francisco, California",
+    src: "/images/me/Shades of the Andaman Sea.jpeg",
+    alt: "Turquoise Waters",
+    caption: "Andaman Sea, Surin Islands",
     size: "medium" as const,
   },
   {
-    src: "/images/me/goldenGatebridge.jpeg",
-    alt: "On Golden Gate Bridge",
-    caption: "Walking the iconic bridge",
+    src: "/images/me/a night to remember - coldplay.jpeg",
+    alt: "Coldplay - Mumbai, 25'",
+    caption: "Mumbai, India",
+    size: "medium" as const,
+  },
+  {
+    src: "/images/me/Japanese restaurant .jpeg",
+    alt: "Exploring Japanese Cuisine",
+    caption: "Marriot, Khao Lak",
     size: "small" as const,
   },
   {
-    src: "/images/me/trees.jpeg",
-    alt: "Trail to Water Wheels Bridge",
-    caption: "Water Wheels Bridge, Payson",
+    src: "/images/me/peacock - ashram.jpeg",
+    alt: "Super friendly companions",
+    caption: "Isha Foundation, Coimbatore",
+    size: "medium" as const,
+  },
+];
+
+const ashramPhotos = [
+  {
+    src: "/images/me/glimpse of Adiyogi - ashram.jpeg",
+    alt: "",
+    caption: "A glimpse of 112ft Adiyogi against the backdrop Velliangiri",
+    size: "large" as const,
+  },
+  {
+    src: "/images/me/annual catch up with teams - ashram.jpeg",
+    alt: "",
+    caption: "Annual catch up with the team",
+    size: "small" as const,
+  },
+  {
+    src: "/images/me/early mornings - ashram.jpeg",
+    alt: "",
+    caption: "Heading for early morning sadhana",
+    size: "medium" as const,
+  },
+  {
+    src: "/images/me/flower arch - ashram.jpeg",
+    alt: "",
+    caption: "The infamous flower arch at the ashram",
+    size: "small" as const,
+  },
+ 
+  {
+    src: "/images/me/Monthly events - ashram.jpeg",
+    alt: "",
+    caption: "Monthly special dinners at ashram",
     size: "medium" as const,
   },
 ];
 
 const hobbyPhotos = [
   {
-    src: "/images/me/golf.jpeg",
-    alt: "Playing Golf",
-    caption: "Golf days",
-    size: "medium" as const,
-  },
-  {
-    src: "/images/me/8ball.jpeg",
-    alt: "Playing Pool",
-    caption: "8-ball enthusiast",
+    src: "/images/me/nandyy and vee.jpeg",
+    alt: "",
+    caption: "",
     size: "small" as const,
   },
   {
-    src: "/images/me/trekking.jpeg",
-    alt: "Trekking",
-    caption: "Mountain adventures",
-    size: "medium" as const,
+    src: "/images/me/peak vacationing.jpeg",
+    alt: "",
+    caption: "",
+    size: "small" as const,
   },
   {
-    src: "/images/me/friends.jpeg",
-    alt: "With Friends",
-    caption: "Good times with great people",
+    src: "/images/me/jivu and vee.jpeg",
+    alt: "",
+    caption: "",
     size: "large" as const,
+  },
+  {
+    src: "/images/me/I like you very matcha.jpeg",
+    alt: "",
+    caption: "",
+    size: "large" as const,
+  },
+  {
+    src: "/images/me/beachy beachy.jpeg",
+    alt: "",
+    caption: "",
+    size: "large" as const,
+  },
+  {
+    src: "/images/me/smoll me.jpeg",
+    alt: "",
+    caption: "",
+    size: "large" as const,
+  },
+  {
+    src: "/images/me/best matcha ever.jpeg",
+    alt: "",
+    caption: "",
+    size: "small" as const,
   },
 ];
 
 // Hackathon highlights data
-const hackathonHighlights = [
+ const hackathonHighlights = [
   {
     title: "SentinelEdge",
     event: "HackASU 2025 - On-Device AI",
@@ -195,7 +248,7 @@ const hackathonHighlights = [
     event: "Devils Invent - Honeywell & ASU",
     description: "Revolutionized industrial digital twin creation by generating complete environments from natural language prompts in under 60 seconds using Gemini AI and AWS IoT TwinMaker.",
   },
-];
+ ];
 
 // Skill Grid Component
 const SkillGrid = ({ skills, title }: { skills: Skill[], title: string }) => (
@@ -225,6 +278,43 @@ const SkillGrid = ({ skills, title }: { skills: Skill[], title: string }) => (
 
 // Photo Gallery Component
 const PhotoGallery = ({ photos, className = "" }: { photos: typeof travelPhotos, className?: string }) => (
+  <div className={`grid grid-cols-4 gap-3 ${className}`}>
+    {photos.map((photo, index) => {
+      const sizeClasses = {
+        small: "col-span-1 row-span-1 aspect-square",
+        medium: "col-span-2 row-span-1 aspect-video",
+        large: "col-span-2 row-span-2 aspect-square",
+      };
+
+      return (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, delay: index * 0.1 }}
+          whileHover={{ scale: 1.02, zIndex: 10 }}
+          className={`${sizeClasses[photo.size]} relative rounded-xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl hover:shadow-primary/20 transition-all duration-300`}
+        >
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute bottom-0 left-0 right-0 p-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <p className="text-white text-xs font-medium flex items-center gap-1">
+              <MapPin className="w-3 h-3" />
+              {photo.caption}
+            </p>
+          </div>
+        </motion.div>
+      );
+    })}
+  </div>
+);
+
+const PhotoGallery_ashram = ({ photos, className = "" }: { photos: typeof ashramPhotos, className?: string }) => (
   <div className={`grid grid-cols-4 gap-3 ${className}`}>
     {photos.map((photo, index) => {
       const sizeClasses = {
@@ -301,7 +391,7 @@ const About = () => {
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg font-semibold flex items-center gap-2">
                   <GraduationCap className="w-5 h-5 text-primary" />
-                  <span className="gradient-text">The Journey Begins</span>
+                  <span className="gradient-text">About Me</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-2">
@@ -311,7 +401,7 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    Hey there! I'm <span className="text-primary font-semibold">Mayank</span>, a Master's student in Data Science at <span className="text-primary font-semibold">Arizona State University</span>. My story is one of curiosity-driven pivots and bold decisions.
+                    Hey there, I’m <span className="text-primary font-semibold">Vasu</span>. Glad you’re here. I spend most of my time building systems at the intersection of <span className="text-primary font-semibold">backend engineering, cloud infrastructure, and AI</span>. Over the years, I’ve worked on distributed platforms, cloud-native applications, large-scale digital systems, and more recently, production-grade AI applications. I enjoy taking complex problems, breaking them down, and turning them into reliable products that people actually use.
                   </motion.p>
 
                   <motion.p
@@ -319,7 +409,7 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    I started my academic journey with a Bachelor's in <span className="text-primary font-semibold">Electrical Engineering from IITRAM</span>, where I got hands-on experience with electrical machines and power systems. But somewhere along the way, I found myself increasingly fascinated by <span className="text-primary font-semibold">Machine Learning, AI, and distributed systems</span>.
+                    Outside of work, curiosity tends to take over. You’ll usually find me keeping up with space exploration and counting down to Artemis III 🚀🌕, reading physics papers just because a topic sounds interesting, exploring ideas around the technological singularity, or diving into the engineering behind high-performance cars 🏎️, engines, and aerodynamics.
                   </motion.p>
 
                   <motion.p
@@ -327,15 +417,7 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                   >
-                    Before ASU, I spent <span className="text-primary font-semibold">one and a half years at IIITDM Kancheepuram</span> as a research intern, diving deep into computer vision and deep learning. Then came a crossroads: a full-time offer from <span className="text-primary font-semibold">Micron as a Process Engineer</span>. It was a secure path, but my heart was set on something different.
-                  </motion.p>
-
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                  >
-                    I took the leap—declining the offer to pursue my Master's at ASU, betting on myself to <span className="text-primary font-semibold">validate and deepen my expertise</span> in the AI/ML domain. And honestly? It's been the best decision I've made.
+                    At their core, these interests all stem from the same fascination: <span className="text-primary font-semibold">complex systems</span>. Whether it's software serving thousands of users, a spacecraft headed for the Moon, or a race car finding speed through engineering, I'm drawn to understanding how ambitious ideas become reality.
                   </motion.p>
                 </div>
               </CardContent>
@@ -350,7 +432,7 @@ const About = () => {
               </CardHeader>
               <CardContent className="pt-2">
                 <SkillGrid skills={programmingSkills} title="Languages" />
-                <SkillGrid skills={aiMlSkills} title="AI/ML" />
+                <SkillGrid skills={aiLlmSkills} title="AI/ML" />
                 <SkillGrid skills={webFrameworkSkills} title="Web & Frameworks" />
                 <SkillGrid skills={infraSkills} title="Infrastructure" />
                 <SkillGrid skills={databaseSkills} title="Databases" />
@@ -379,7 +461,7 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    I build production ML systems — and then write papers about what I learned building them.
+                    I enjoy building the systems behind modern applications, from cloud-native platforms to production-grade AI.
                   </motion.p>
 
                   <motion.p
@@ -387,7 +469,19 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    On the engineering side: a hybrid job-matching platform live on GCP (<span className="text-primary font-semibold">30+ endpoints, &lt;82ms latency</span>), a <span className="text-primary font-semibold">1.2TB table retrieval pipeline</span> achieving 93% Recall@10, and an on-device scam detection system running under <span className="text-primary font-semibold">50ms on edge hardware</span> without cloud dependency.
+                    Over the years, I've designed and delivered products from the ground up, owning{" "}
+                    <span className="text-primary font-semibold">
+                      architecture, engineering decisions, and execution end to end
+                    </span>
+                    . My work includes building a full e-commerce platform with integrated payments
+                    and WhatsApp-native lead processing, engineering a distributed image processing
+                    pipeline that improved throughput by{" "}
+                    <span className="text-primary font-semibold">60%</span> for an ecosystem serving{" "}
+                    <span className="text-primary font-semibold">10 million+ annual participants</span>,
+                    unifying four fragmented payment systems into a single fault-tolerant platform,
+                    and reducing data retrieval latency from{" "}
+                    <span className="text-primary font-semibold">150ms to under 30ms</span> for more
+                    than <span className="text-primary font-semibold">30,000 concurrent users</span>.
                   </motion.p>
 
                   <motion.p
@@ -395,7 +489,12 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                   >
-                    On the research side: <span className="text-primary font-semibold">5 publications</span> across IEEE, Springer, AACL, and ACL venues. <span className="text-primary font-semibold">17+ citations.</span> Thesis defense May 2026.
+                    My background is rooted in{" "}
+                    <span className="text-primary font-semibold">
+                      backend engineering, cloud infrastructure, and distributed systems
+                    </span>
+                    . I've spent much of my career building and operating systems that need to be
+                    reliable, scalable, and resilient under real-world load.
                   </motion.p>
 
                   <motion.p
@@ -403,173 +502,77 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                   >
-                    My stack: Python, C++, TypeScript — FastAPI backends, React frontends, Dockerized deployments on GCP and AWS. On the ML side: PyTorch, HuggingFace, LangChain, FAISS, Neo4j, Elasticsearch.
+                    Over the last year, I've been exploring AI systems through practical business
+                    problems rather than experimentation for its own sake. That journey has led me
+                    to build voice-based workflows, agentic applications, and retrieval-augmented
+                    systems involving contextual memory, evaluation pipelines, confidence scoring,
+                    structured outputs, and orchestration frameworks designed for production
+                    reliability.
+                  </motion.p>
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                  >
+                    Beyond engineering, I write extensively about{" "}
+                    <span className="text-primary font-semibold">
+                      AI adoption, enterprise technology, and intelligent systems
+                    </span>
+                    , translating complex technical concepts into practical insights for business
+                    and technology leaders.
                   </motion.p>
                 </div>
               </CardContent>
             </Card>
 
             {/* Hackathon Highlights Card */}
+
+            {/* Life at Ashram Card */}
             <Card className="bg-card/70 backdrop-blur-md border-border/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg font-semibold flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-primary" />
-                  <span className="gradient-text">Hackathon Highlights</span>
+                  <Camera className="w-5 h-5 text-primary" />
+                  <span className="gradient-text">Life at Ashram</span>
                 </CardTitle>
+                <Badge variant="outline" className="w-fit bg-primary/10 border-primary/30 text-primary text-xs mt-1">
+                  Curving Away From the Straight Line
+                </Badge>
               </CardHeader>
               <CardContent className="pt-2">
                 <p className="text-sm text-muted-foreground mb-4">
-                  Building innovative solutions under pressure - here are some memorable hackathon moments.
+                My office view wasn't the skylines. It was the Velliangiri Mountains ⛰️. While working with the core engineering teams, I had the opportunity to contribute to large-scale digital platforms in an environment that blended technology, culture, and nature in a way few workplaces can. Between mountain views, classical music drifting through the campus, and people from every corner of the world coming together for a shared purpose, it was a unique experience that constantly reminded me there's more to life than deadlines, deployments, and sprint boards.
                 </p>
-                <div className="space-y-5">
-                  {hackathonHighlights.map((hackathon, index) => {
-                    // Check if this hackathon should have horizontal layout (image left, content right)
-                    const isHorizontalLayout = hackathon.title === "GamED-AI" || hackathon.title === "SentinelEdge" || hackathon.title === "Hire Smart" || hackathon.title === "Interview Unlocked";
-                    
-                    return (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: index * 0.1 }}
-                        className="group"
-                      >
-                        <div className="p-4 rounded-xl bg-background/30 border border-border/30 hover:border-primary/30 transition-all duration-300">
-                          {isHorizontalLayout && 'image' in hackathon && hackathon.image ? (
-                            // Horizontal layout: Image on left, content on right
-                            <div className="flex gap-4">
-                              <div className="relative w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden">
-                                <Image
-                                  src={hackathon.image}
-                                  alt={hackathon.title}
-                                  fill
-                                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                />
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-start justify-between gap-2 mb-2">
-                                  <div className="flex-1 min-w-0">
-                                    <h4 className="font-medium text-sm text-foreground group-hover:text-primary transition-colors">
-                                      {hackathon.title}
-                                    </h4>
-                                    <p className="text-xs text-muted-foreground mt-0.5">{hackathon.event}</p>
-                                  </div>
-                                  <div className="flex items-center gap-1 flex-shrink-0">
-                                    {hackathon.githubLink && (
-                                      <a
-                                        href={hackathon.githubLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="p-1.5 rounded-md hover:bg-muted/50 transition-colors"
-                                      >
-                                        <Github className="w-4 h-4 text-muted-foreground hover:text-foreground" />
-                                      </a>
-                                    )}
-                                    {hackathon.projectLink && (
-                                      <a
-                                        href={hackathon.projectLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="p-1.5 rounded-md hover:bg-muted/50 transition-colors"
-                                      >
-                                        <ExternalLink className="w-4 h-4 text-muted-foreground hover:text-foreground" />
-                                      </a>
-                                    )}
-                                  </div>
-                                </div>
-                                {hackathon.description && (
-                                  <p className="text-xs text-muted-foreground/80 leading-relaxed">
-                                    {hackathon.description}
-                                  </p>
-                                )}
-                                {('award' in hackathon) && (hackathon as any).award && (
-                                  <span className="inline-flex items-center gap-1 mt-2 text-xs text-yellow-600 dark:text-yellow-400 px-2 py-0.5 rounded-full bg-yellow-500/10 border border-yellow-500/20">
-                                    <Trophy className="w-3 h-3" />
-                                    {(hackathon as any).award}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                          ) : (
-                            // Vertical layout: Image on top, content below
-                            <>
-                              {/* Image(s) - Enlarged */}
-                              {'images' in hackathon && Array.isArray((hackathon as any).images) && (hackathon as any).images.length > 0 ? (
-                                <div className="flex gap-2 mb-3">
-                                  {((hackathon as any).images as string[]).map((img: string, i: number) => (
-                                    <div key={i} className="relative w-28 h-28 rounded-lg overflow-hidden">
-                                      <Image
-                                        src={img}
-                                        alt={`${hackathon.title} ${i + 1}`}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                      />
-                                    </div>
-                                  ))}
-                                </div>
-                              ) : 'image' in hackathon && hackathon.image ? (
-                                <div className="relative w-full h-32 rounded-lg overflow-hidden mb-3">
-                                  <Image
-                                    src={hackathon.image}
-                                    alt={hackathon.title}
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                  />
-                                </div>
-                              ) : null}
-                              {/* Content */}
-                              <div className="flex items-start justify-between gap-2">
-                                <div className="flex-1">
-                                  <h4 className="font-medium text-sm text-foreground group-hover:text-primary transition-colors">
-                                    {hackathon.title}
-                                  </h4>
-                                  <p className="text-xs text-muted-foreground mt-0.5">{hackathon.event}</p>
-                                </div>
-                                <div className="flex items-center gap-1 flex-shrink-0">
-                                  {hackathon.githubLink && (
-                                    <a
-                                      href={hackathon.githubLink}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="p-1.5 rounded-md hover:bg-muted/50 transition-colors"
-                                    >
-                                      <Github className="w-4 h-4 text-muted-foreground hover:text-foreground" />
-                                    </a>
-                                  )}
-                                  {hackathon.projectLink && (
-                                    <a
-                                      href={hackathon.projectLink}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="p-1.5 rounded-md hover:bg-muted/50 transition-colors"
-                                    >
-                                      <ExternalLink className="w-4 h-4 text-muted-foreground hover:text-foreground" />
-                                    </a>
-                                  )}
-                                </div>
-                              </div>
-                              {/* Description */}
-                              {hackathon.description && (
-                                <p className="text-xs text-muted-foreground/80 mt-2 leading-relaxed">
-                                  {hackathon.description}
-                                </p>
-                              )}
-                              {/* Award */}
-                              {('award' in hackathon) && (hackathon as any).award && (
-                                <span className="inline-flex items-center gap-1 mt-3 text-xs text-yellow-600 dark:text-yellow-400 px-2 py-0.5 rounded-full bg-yellow-500/10 border border-yellow-500/20">
-                                  <Trophy className="w-3 h-3" />
-                                  {(hackathon as any).award}
-                                </span>
-                              )}
-                            </>
-                          )}
-                        </div>
-                      </motion.div>
-                    );
-                  })}
+
+                <p className="text-muted-foreground text-sm mt-4 mb-3">
+                Initiatives making a global difference - Towards a more conscious planet 🌏:
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  <a href="https://consciousplanet.org/en" target="_blank" 
+                    className="px-3 py-1 text-xs font-medium border border-primary/30 
+                    bg-primary/8 text-primary rounded-full tracking-wide 
+                    hover:bg-primary/15 hover:border-primary/50 transition-all cursor-pointer">
+                    🌱 Save Soil
+                  </a>
+                  <a href="https://consciousplanet.org/en" target="_blank"
+                    className="px-3 py-1 text-xs font-medium border border-primary/30 
+                    bg-primary/8 text-primary rounded-full tracking-wide 
+                    hover:bg-primary/15 hover:border-primary/50 transition-all cursor-pointer">
+                    🌊 Rally for Rivers
+                  </a>
+                  <a href="https://consciousplanet.org/en" target="_blank"
+                    className="px-3 py-1 text-xs font-medium border border-primary/30 
+                    bg-primary/8 text-primary rounded-full tracking-wide 
+                    hover:bg-primary/15 hover:border-primary/50 transition-all cursor-pointer">
+                    💧 Cauvery Calling
+                  </a>
                 </div>
+                <br/>
+                <PhotoGallery_ashram photos={ashramPhotos} className="mt-4" />
               </CardContent>
             </Card>
+
           </motion.div>
 
           {/* Right Column - Personal & Hobbies */}
@@ -594,7 +597,7 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    Life isn't just about algorithms and neural networks (though I do love those!). I believe in living fully and finding joy in diverse experiences.
+                    Life, for me, is a collection of experiences. Some are found in late-night conversations with good people, some in discovering a café I'll probably revisit ten times, and some while standing by the ocean wondering where to go next. I'm always looking for new experiences, and new stories to collect. Bonus points if one of those stories involves meeting a sea turtle somewhere along the way.𓆉
                   </motion.p>
                 </div>
               </CardContent>
@@ -610,12 +613,9 @@ const About = () => {
                 <Card className="bg-card/70 backdrop-blur-md border-border/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 h-full">
                   <CardContent className="p-4 flex flex-col items-center text-center">
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                      <Mountain className="w-6 h-6 text-primary" />
+                      <Gamepad2 className="w-6 h-6 text-primary" />
                     </div>
-                    <h4 className="font-semibold text-sm mb-1">Hiking & Trekking</h4>
-                    <p className="text-xs text-muted-foreground">
-                      Arizona's trails are my weekend therapy
-                    </p>
+                    <h4 className="font-semibold text-sm mb-1">Sim Time</h4>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -628,12 +628,9 @@ const About = () => {
                 <Card className="bg-card/70 backdrop-blur-md border-border/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 h-full">
                   <CardContent className="p-4 flex flex-col items-center text-center">
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                      <Gamepad2 className="w-6 h-6 text-primary" />
+                      <Coffee className="w-6 h-6 text-primary" />
                     </div>
-                    <h4 className="font-semibold text-sm mb-1">Pool & Golf</h4>
-                    <p className="text-xs text-muted-foreground">
-                      Precision sports that clear my mind
-                    </p>
+                    <h4 className="font-semibold text-sm mb-1">Cafe Hopping</h4>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -649,9 +646,6 @@ const About = () => {
                       <Camera className="w-6 h-6 text-primary" />
                     </div>
                     <h4 className="font-semibold text-sm mb-1">Photography</h4>
-                    <p className="text-xs text-muted-foreground">
-                      Capturing moments and landscapes
-                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -667,9 +661,6 @@ const About = () => {
                       <MapPin className="w-6 h-6 text-primary" />
                     </div>
                     <h4 className="font-semibold text-sm mb-1">Road Trips</h4>
-                    <p className="text-xs text-muted-foreground">
-                      Exploring the American Southwest
-                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -689,7 +680,7 @@ const About = () => {
             </Card>
 
             {/* Philosophy Card */}
-            <Card className="bg-gradient-to-br from-primary/10 to-purple-500/10 backdrop-blur-md border-primary/20 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+            {/* <Card className="bg-gradient-to-br from-primary/10 to-purple-500/10 backdrop-blur-md border-primary/20 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
               <CardContent className="p-6">
                 <motion.blockquote
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -708,7 +699,7 @@ const About = () => {
                   </p>
                 </motion.blockquote>
               </CardContent>
-            </Card>
+            </Card> */}
 
             {/* Fun Facts Card */}
             <Card className="bg-card/70 backdrop-blur-md border-border/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
@@ -720,11 +711,13 @@ const About = () => {
               <CardContent className="pt-2">
                 <div className="space-y-2">
                   {[
-                    { emoji: "🎓", fact: "Dropped a Micron offer to follow my passion" },
-                    { emoji: "🌵", fact: "Currently based in Tempe, Arizona" },
-                    { emoji: "☕", fact: "Coffee enthusiast & late-night coder" },
-                    { emoji: "🎱", fact: "Competitive 8-ball player" },
-                    { emoji: "🏔️", fact: "Hiked the Grand Canyon rim-to-rim" },
+                    { emoji: "📍", fact: "Currently based in Bangalore, India" },
+                    { emoji: "☕", fact: "Coffee, code and Italian cuisine" },
+                    { emoji: "🌴", fact: "Tropics over anywhere, always" },
+                    { emoji: "🤿", fact: "Exploring the ocean, one snorkel at a time" },
+                    { emoji: "🏎️", fact: "Cars, F1, and anything with an engine" },
+                    { emoji: "🎸", fact: "Figuring out chords, one song at a time" },
+
                   ].map((item, index) => (
                     <motion.div
                       key={index}
@@ -751,8 +744,7 @@ const About = () => {
               </CardHeader>
               <CardContent className="pt-2">
                 <p className="text-sm text-muted-foreground mb-4">
-                  When I'm not coding, I'm exploring the beautiful landscapes of the American Southwest. From the majestic Grand Canyon to the iconic Golden Gate Bridge, every destination teaches me something new.
-                </p>
+                Chasing tropical shorelines, snorkeling 100 feet into the open ocean, eating food whose names I won't remember later, drinking coconut straight from the source on a beach with nowhere to be. Every one of these experiences is different, yet they all lead to the same feeling. Travel, for me, is not about ticking destinations. It is a reminder that the world is staggeringly beautiful, wildly varied, and worth showing up for fully.                </p>
                 <PhotoGallery photos={travelPhotos} />
               </CardContent>
             </Card>
@@ -772,35 +764,26 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
+                    <div className="flex-1">
+                      <h4 className="text-base font-medium text-foreground">
+                        The Next Adventure
+                      </h4>
+                      <p className="text-sm text-muted-foreground/80 mt-1.5 leading-relaxed">
+                        Building AI systems, shipping experiments, and exploring opportunities where ambitious ideas become real products.
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                  >
                     <a
-                      href="https://stripesessions.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block group/stripe"
+                      href="mailto:vasupradharamachandrans@gmail.com"
+                      className="inline-flex items-center text-sm text-primary hover:text-primary/80 transition-colors"
                     >
-                      <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                        {/* Image Column — matches project section */}
-                        <div className="sm:w-44 flex-shrink-0">
-                          <div className="relative w-full h-24 sm:h-20 rounded-lg overflow-hidden bg-muted/30">
-                            <Image
-                              src="/images/logos/stripe-sessions-2025.webp"
-                              alt="Stripe Sessions 2026"
-                              fill
-                              className="object-cover scale-150 group-hover/stripe:scale-[1.6] transition-transform duration-300"
-                              sizes="(max-width: 640px) 100vw, 176px"
-                            />
-                          </div>
-                        </div>
-                        {/* Content Column */}
-                        <div className="flex-1">
-                          <h4 className="text-base font-medium text-foreground group-hover/stripe:text-primary transition-colors">
-                            Stripe Sessions 2026
-                          </h4>
-                          <p className="text-sm text-muted-foreground/80 mt-1.5 leading-relaxed">
-                            Attending Stripe Sessions 2026 — exploring the future of payments, fintech infrastructure, and developer tools.
-                          </p>
-                        </div>
-                      </div>
+                      Always open to interesting conversations, ideas, and opportunities - Let&apos;s Talk
                     </a>
                   </motion.div>
                 </div>

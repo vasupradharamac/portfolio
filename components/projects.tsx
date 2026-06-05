@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Github, ExternalLink, Youtube } from 'lucide-react'
-import Image from 'next/image'
 import { SectionBackground } from './section-background'
 
 type Project = {
@@ -12,238 +11,95 @@ type Project = {
   image: string;
   technologies: string[];
   achievements: string[];
-  period: string;
-  githubUrl: string;
-  liveUrl?: string;
-  videoUrl?: string;
-  articleUrl?: string;
+  // period: string;
+  // githubUrl: string;
+  // liveUrl?: string;
+  // videoUrl?: string;
+  // articleUrl?: string;
   category: string;
 };
 
+// {
+//   title: 'Enterprise Sales Analytics Dashboard',
+//   description: 'Power BI dashboard with DAX measures and advanced data modeling for actionable business intelligence.',
+//   image: '/images/projects/dashboard.png',
+//   technologies: ['Power BI', 'DAX', 'Data Modeling', 'ETL'],
+//   achievements: [
+//     'Achieved 99.8% accuracy in YoY growth calculations',
+//     'Reduced query time by 40% through star schema optimization',
+//     'Revealed $1.2M revenue opportunity via geo-spatial analysis'
+//   ],
+//   period: 'Feb 2025',
+//   githubUrl: 'https://github.com/intel-retail/automated-self-checkout/pull/652',
+//   liveUrl: 'https://app.powerbi.com/reportEmbed?reportId=28cfe113-229a-461c-a719-cc7ce42fd44d&autoAuth=true&ctid=41f88ecb-ca63-404d-97dd-ab0a169fd138',
+//   category: 'Data Analytics'
+// },
+
 const projects: Project[] = [
   {
-    title: 'JobSync — Agentic Job Search MCP Service',
-    description: 'An agentic job-search tool that integrates with MCP clients (Claude Desktop, Claude Code, Cursor) to discover, classify, and sync job postings into Airtable or markdown files. Profile-based filtering uses your resume and role preferences to match relevant positions.',
-    image: '/images/projects/yt-JobSync_thumbnail.png',
-    technologies: ['MCP', 'Node.js', 'Airtable', 'SQLite', 'Claude AI', 'TypeScript'],
+    title: 'AI-Assisted Voice Concierge Platform',
+    description: 'A voice concierge platform with constrained retrieval, confidence-gated LLM responses, and an offline eval framework built to validate source attribution accuracy and answer fidelity at scale.',
+    technologies: ['Python', 'LiveKit', 'GPT-4o', 'Supabase pgvector', 'FastAPI'],
     achievements: [
-      '1,440+ weekly downloads on npm — published as jobsync-mcp',
-      'Built direct ATS fetchers for Greenhouse, Lever, and Ashby — model-agnostic architecture where users bring their own LLM',
-      'SQLite-based deduplication cache prevents duplicate entries across runs; dual output to Airtable bases or local markdown files',
-      'Profile onboarding pipeline parses resume to extract skills, experience, and projects for intelligent job matching'
+      'Constrained retrieval at query time via metadata filters, preventing content overlap across knowledge sources',
+      'Confidence-gated retrieval where similarity scores below threshold suppress the LLM response and log the coverage gap, reducing hallucination under low-recall conditions',
+      'Offline eval framework validating source attribution accuracy and answer fidelity against a pre-generated dataset',
     ],
-    period: 'Apr 2026',
-    githubUrl: 'https://github.com/Mayank-glitch-cpu/JobSync-Service',
-    liveUrl: 'https://mayank-glitch-cpu.github.io/JobSync-Service/',
-    videoUrl: 'https://www.youtube.com/watch?v=M1cRe2JjIhg',
-    articleUrl: 'https://mayank-glitch-cpu.github.io/JobSync-Service/',
-    category: 'AI & LLM'
+    image: "",
+    category:"Voice AI",
   },
   {
-    title: 'SentinelEdge — On-Device Multimodal Scam Detection',
-    description: 'Real-time speech + text scam detection on edge hardware, no cloud dependency. Built a multimodal fusion pipeline combining Whisper Tiny (audio transcription) and XGBoost (text classification) with federated learning for on-device model updates.',
-    image: '/images/projects/ScamProof.png',
-    technologies: ['TinyML', 'Whisper', 'XGBoost', 'Federated Learning', 'PyTorch', 'FastAPI'],
+    title: 'Multilingual Voice Support Agent',
+    description: 'A production-ready multilingual support agent handling queries across all 22 Indian languages in under 3 seconds, with retrieval scoped via metadata filters to prevent cross-account context leakage.',
+    technologies: ['Python', 'Sarvam AI', 'Pinecone', 'pgvector', 'OpenAI', 'FastAPI'],
     achievements: [
-      'Built a multimodal fusion pipeline running at <50ms latency on constrained hardware with zero cloud calls',
-      'Integrated federated learning for on-device model updates — preserving user privacy by ensuring no raw audio ever leaves the device',
-      'Evaluated against adversarial and real-world audio distributions; measured false-positive rate across diverse scam speech patterns'
+      'Handles all 22 Indian languages in under 3 seconds on Sarvam AI 30B model with metadata-scoped retrieval preventing cross-account context leakage',
+      'RAG pipeline with document ingestion and persistent conversation history for contextual recall and feedback-loop-driven retrieval improvement',
+      'Automatic escalation logic with sentiment and confidence-score triggers, passing a structured conversation summary to the human agent at handoff for zero-context-loss transfers',
     ],
-    period: 'Mar 2026',
-    githubUrl: 'https://github.com/Mayank-glitch-cpu/SentinelEdge',
-    videoUrl: 'https://youtu.be/TbUMw-mnLhI?si=2qZgQhyVKehEfEVy',
-    category: 'AI & LLM'
+    image: "",
+    category: "Voice AI"
   },
   {
-    title: 'AXIS — Agentic eXpert Interview System',
-    description: 'A 4-agent orchestration pipeline using LangChain + LangGraph that autonomously prepares candidates for interviews — parsing resumes, researching companies, generating tailored questions, and building personalized study plans.',
-    image: '/images/projects/Axis.png',
-    technologies: ['LangChain', 'LangGraph', 'FastAPI', 'Docker'],
+    title: 'VP in Your Pocket — Agentic Deal Accelerator',
+    description: 'A multi-agent conversational sales coaching system built on LangGraph where one agent coaches the rep in real time and a background MEDDIC scoring agent evaluates deal health, flags risks, and propagates context forward automatically.',
+    technologies: ['Python', 'LangGraph', 'OpenAI API', 'FastAPI', 'Pinecone'],
     achievements: [
-      'Architected planner/executor agent loops with shared memory and tool routing across 4 specialized agents',
-      'Agents autonomously scrape company data, parse resumes, generate role-specific questions, and build study plans',
-      'Configurable fallbacks and kill-switches for reliable multi-source knowledge routing'
+      'Two agents on shared LangGraph state, one coaching the rep in real time, one scoring MEDDIC dimensions in the background with OpenAI as the inference layer',
+      'Deal health updates, risk flags, and context propagation handled automatically, eliminating manual CRM updates',
+      'Worked directly with the client through discovery sessions to understand sales workflows, pain points, and desired outcomes',
+      'Managed the full project lifecycle from requirements to delivery with continuous client feedback loops',
     ],
-    period: 'Jan 2026',
-    githubUrl: 'https://github.com/Mayank-glitch-cpu/Interview-Prep-AI',
-    category: 'AI & LLM'
+    image:"",
+    category: "Multi-Agent"
   },
   {
-    title: 'AI-Powered Gamified Learning Platform',
-    description: 'Transform educational questions into interactive, story-based visualizations using AI. Features a 4-layer pipeline that intelligently routes content from documents (PDF/DOCX) to 18 distinct game templates with intelligent caching and real-time progress tracking.',
-    image: '/images/projects/claude.webp',
-    technologies: ['Next.js', 'FastAPI', 'Claude AI', 'Zustand'],
+    title: 'KV Iyengars — Full Stack E-commerce Platform',
+    description: 'A full e-commerce platform built from scratch as a freelance engagement. Owned the entire product from architecture to delivery including storefront, payments, admin operations, and automated lead processing.',
+    technologies: ['Python', 'FastAPI', 'React', 'Razorpay', 'WhatsApp Business API', 'n8n', 'PostgreSQL'],
     achievements: [
-      '1st Place Winner at HackASU 2025 (Anthropic Sponsored)',
-      'Built 18 game templates with template-aware story generation',
-      'Implemented intelligent caching reducing processing time by 80%'
+      'Razorpay payment integration with full order lifecycle management across storefront and admin portal',
+      'WhatsApp Business API integration for inbound lead processing, turning conversational queries into tracked orders',
+      'n8n automation pipeline for lead qualification and routing, eliminating manual follow-up overhead',
     ],
-    period: 'Dec 2025',
-    githubUrl: 'https://github.com/Mayank-glitch-cpu/Claude_Hackathon',
-    liveUrl: 'https://youtu.be/0q3TwJJ7xrA',
-    category: 'AI & LLM'
+    image:"",
+    category:"Backend"
   },
   {
-    title: 'Code Completion Model: Multi-Dimensional LLM Analysis',
-    description: 'Research project investigating efficiency, scalability, and linguistic adaptability of Fine-Tuned LLMs for code generation. Explores LoRA rank optimization, data scaling effects, and cross-language generalization using GPT-2.',
-    image: '/images/projects/Fine Tuning.png',
-    technologies: ['PyTorch', 'GPT-2', 'LoRA/PEFT', 'Transformers'],
+    title: 'LLM-Powered Pricing Engine',
+    description: 'A production pricing intelligence system generating rich product feature vectors from natural language descriptions, benchmarking live market prices, and directly informing pricing strategy for a real business.',
+    technologies: ['Python', 'OpenAI API', 'LangChain'],
     achievements: [
-      'Identified optimal LoRA rank 16 achieving 30% syntax pass rate',
-      'Discovered "Complexity Trap" in data scaling behavior',
-      'Demonstrated language-agnostic learning across Python, Java, JavaScript'
+      'Generates rich product features from natural language descriptions with no manual tagging required',
+      'Live market price benchmarking surfaces actionable recommendations that non-technical staff can act on directly',
+      'Worked closely with the business owner through discovery to ensure outputs matched actual pricing decision workflows',
     ],
-    period: 'Nov 2025',
-    githubUrl: 'https://github.com/Mayank-glitch-cpu/Code-Completion-ModeL/tree/main',
-    liveUrl: 'https://docs.google.com/presentation/d/19YUKdk89ZhGiziEwFF0n-UEtvHQRzPUxMawx2kLWktQ/edit?usp=sharing',
-    category: 'AI & LLM'
+    image: "",
+    category: "AI & LLM"
   },
-  {
-    title: 'TREC Report Generator',
-    description: 'Python pipeline to convert inspection JSON data into populated TREC (Texas Real Estate Commission) HTML reports. Features smart mapping across 6 TREC sections, automatic empty section removal, and proper formatting for comments, images, and videos.',
-    image: '/images/projects/TREC.png',
-    technologies: ['Python', 'BeautifulSoup4', 'HTML/CSS', 'JSON'],
-    achievements: [
-      'Automated mapping of line items to TREC sections I-VI',
-      'Smart filtering removes empty sections automatically',
-      'Proper media embedding with images and video controls'
-    ],
-    period: 'Nov 2025',
-    githubUrl: 'https://github.com/Mayank-glitch-cpu/TREC-Report-Generator',
-    category: 'Data'
-  },
-  // {
-  //   title: 'Job Tracker: AI-Powered Career Automation',
-  //   description: 'End-to-end AI automation pipeline using Elasticsearch for semantic search and knowledge graphs to map job requirements with user skills.',
-  //   image: '/images/projects/AI Job Tracker Overview.png',
-  //   technologies: ['Elasticsearch', 'LLM Agents', 'Knowledge Graphs', 'Chrome Extension'],
-  //   achievements: [
-  //     'Improved job match relevance by 92% through AI automation',
-  //     'Launched Chrome extension with 12 active users across US and India',
-  //     'Reduced manual search time by 98%'
-  //   ],
-  //   period: 'Present',
-  //   githubUrl: 'https://github.com/Mayank-glitch-cpu/Job-Tracker',
-  //   liveUrl: 'https://chromewebstore.google.com/detail/job-tracker/jglalknjiibgaggndnicpaiigbgjfgha',
-  //   category: 'AI & LLM'
-  // },
-  {
-    title: 'Enterprise Sales Analytics Dashboard',
-    description: 'Power BI dashboard with DAX measures and advanced data modeling for actionable business intelligence.',
-    image: '/images/projects/dashboard.png',
-    technologies: ['Power BI', 'DAX', 'Data Modeling', 'ETL'],
-    achievements: [
-      'Achieved 99.8% accuracy in YoY growth calculations',
-      'Reduced query time by 40% through star schema optimization',
-      'Revealed $1.2M revenue opportunity via geo-spatial analysis'
-    ],
-    period: 'Feb 2025',
-    githubUrl: 'https://github.com/intel-retail/automated-self-checkout/pull/652',
-    liveUrl: 'https://app.powerbi.com/reportEmbed?reportId=28cfe113-229a-461c-a719-cc7ce42fd44d&autoAuth=true&ctid=41f88ecb-ca63-404d-97dd-ab0a169fd138',
-    category: 'Data Analytics'
-  },
-  {
-    title: 'Intel Automated Checkout System (Open Source Contribution)',
-    description: 'Automated data extraction and real-time visualization pipeline for Intel\'s retail edge computing platform. Built Python scripts to extract metrics from results logs and publish to an MQTT broker, integrated with Grafana dashboards via the MQTT plugin. Created custom Docker images for Grafana and MQTT configured to communicate on the same Docker network using Docker Compose.',
-    image: '/images/projects/intel.png',
-    technologies: ['Docker', 'Grafana', 'MQTT', 'Docker Compose'],
-    achievements: [
-      'Reduced MTTR by 73% through custom alerting',
-      'Implemented JWT-based OAuth 2.0 with RBAC for SOC2 compliance',
-      'Automated data extraction pipeline with real-time MQTT streaming'
-    ],
-    period: 'Jan 2025',
-    githubUrl: 'https://github.com/intel-retail/automated-self-checkout/pull/652',
-    liveUrl: 'https://drive.google.com/file/d/18ah7F6vSt54jlHsKUM9YT-EHUG1ZWRzg/view?usp=sharing',
-    category: 'DevOps'
-  },
-  {
-    title: 'MaskRoot: CV for Agricultural Phenomics',
-    description: "This project is part of a Bachelor's Research Thesis, aiming to detect and segment primary roots in plant images using a customized version of the Mask R-CNN model adapted for TensorFlow 2.0 and Keras 2.2.8. The original codebase from Matterport's Mask R-CNN was modified for compatibility and to support training and inference on annotated root datasets.",
-    image: '/images/projects/root.png',
-    technologies: ['TensorFlow', 'OpenCV', 'Mask R-CNN', 'FPN'],
-    achievements: [
-      'Achieved 96.5% IoU accuracy through transfer learning',
-      'Reduced annotation workload by 90%',
-      'Published in Springer\'s CV in Plant Phenotyping conference'
-    ],
-    period: 'Apr 2023 — Apr 2024',
-    githubUrl: 'https://github.com/Mayank-glitch-cpu/Root_phenotyping',
-    category: 'ML'
-  },
-    // {
-    //   title: 'DASA: Distributed Agricultural Sensing',
-    //   description: 'Hierarchical IoT architecture using LoRaWAN for agricultural monitoring with fog computing layer.',
-    //   image: '/images/projects/dasa.jpg',
-    //   technologies: ['Apache Spark', 'LoRaWAN', 'Edge Computing', 'Time Series'],
-    //   achievements: [
-    //     'Achieved 57.39% data compression without information loss',
-    //     'Reduced cloud costs by 38% through edge analytics',
-    //     'Published in IEEE AINA 2023'
-    //   ],
-    //   period: 'May 2022 — Aug 2022',
-    //   githubUrl: 'https://github.com/Mayank-glitch-cpu/AINA_Code',
-    //   category: 'IoT'
-    // },
-  // {
-  //   title: 'Deep RL for Urban Traffic Control',
-  //   description: 'Adaptive traffic signal control using Deep Q-Networks in SUMO simulation environment.',
-  //   image: '/images/projects/sumo_rl.jpg',
-  //   technologies: ['RLlib', 'SUMO', 'TensorFlow', 'DQN'],
-  //   achievements: [
-  //     'Reduced vehicle waiting time by 35%',
-  //     'Improved traffic throughput by 22%',
-  //     'Implemented double DQN with dueling architecture'
-  //   ],
-  //   period: 'Jan 2024 — Apr 2024',
-  //   githubUrl: 'https://github.com/Mayank-glitch-cpu/Intersection-Control-using-Reinforcement-learning-and-SUMO',
-  //   category: 'ML'
-  // },
-  {
-    title: 'MLP from First Principles',
-    description: 'This projects implementation of a Multi-Layer Perceptron (MLP) from scratch using Python. It demonstrates the fundamental concepts of building and training a neural network, including forward propagation, backward propagation, and parameter optimization.',
-    image: '/images/projects/mlp.png',
-    technologies: ['NumPy', 'Backpropagation', 'Gradient Descent', 'Jupyter'],
-    achievements: [
-      'Achieved 92% accuracy on MNIST using only NumPy',
-      'Implemented automatic differentiation for gradients',
-      'Created interactive weight matrix visualizations'
-    ],
-    period: 'Aug 2024 — Nov 2024',
-    githubUrl: 'https://github.com/Mayank-glitch-cpu/MLP-from-Scratch',
-    category: 'ML'
-  },
-  // {
-  //   title: 'RPDM: Resource-efficient IoT ML',
-  //   description: 'Ultra-lightweight ML inference for resource-constrained IoT devices with model quantization.',
-  //   image: '/images/projects/rpdm.png',
-  //   technologies: ['TensorFlow Lite', 'Model Quantization', 'Raspberry Pi', 'Arduino'],
-  //   achievements: [
-  //     'Achieved 99.97% accuracy with 22MB to 480KB model compression',
-  //     'Decreased power consumption by 82.89%',
-  //     'Deployed to Raspberry Pi Zero and Arduino'
-  //   ],
-  //   period: 'Aug 2023 — Jan 2024',
-  //   githubUrl: 'https://github.com/Mayank-glitch-cpu/Ml_predictions_framework_for_Smart_Farming',
-  //   category: 'IoT'
-  // },
-  // {
-  //   title: 'Scalable Data Processing Pipeline',
-  //   description: 'Distributed ETL pipeline for high-frequency sensor data with data lineage for compliance.',
-  //   image: '/images/projects/DP.jpg',
-  //   technologies: ['PySpark', 'Pandas', 'SQL', 'Streaming'],
-  //   achievements: [
-  //     'Reduced processing runtime by 40%',
-  //     'Scaled to 10,000+ rows/sec with sub-second latency',
-  //     'Implemented automated data quality checks'
-  //   ],
-  //   period: 'Aug 2024 — Oct 2024',
-  //   githubUrl: 'https://github.com/Mayank-glitch-cpu/Data-Processing',
-  //   category: 'Data'
-  // }
 ]
 
-const categories = ['All', 'AI & LLM', 'ML', 'Data', 'Data Analytics', 'IoT', 'DevOps']
+const categories = ['All', 'AI & LLM', 'Voice AI', 'Backend']
 
 const Projects = () => {
   const [filter, setFilter] = useState<string>('All')
@@ -303,31 +159,15 @@ const Projects = () => {
                 layout
                 className="group"
               >
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                  {/* Image + Date Column */}
-                  <div className="sm:w-44 flex-shrink-0">
-                    <div className="relative w-full h-24 sm:h-20 rounded-lg overflow-hidden bg-muted/30 mb-2">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, 176px"
-                      />
-                    </div>
-                    <span className="text-xs text-muted-foreground font-light">
-                      {project.period}
-                    </span>
-                  </div>
-
+                <div className="flex flex-col gap-4">
                   {/* Content Column */}
-                  <div className="flex-1">
+                  <div className="w-full">
                     <div className="flex items-start justify-between gap-2">
                       <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
                         {project.title}
                       </h3>
                       <div className="flex items-center gap-2 flex-shrink-0">
-                        <a
+                        {/* <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -335,8 +175,8 @@ const Projects = () => {
                           aria-label="View on GitHub"
                         >
                           <Github className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
-                        </a>
-                        {project.liveUrl && (
+                        </a> */}
+                        {/* {project.liveUrl && (
                           <a
                             href={project.liveUrl}
                             target="_blank"
@@ -346,8 +186,8 @@ const Projects = () => {
                           >
                             <ExternalLink className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
                           </a>
-                        )}
-                        {project.videoUrl && (
+                        )} */}
+                        {/* {project.videoUrl && (
                           <a
                             href={project.videoUrl}
                             target="_blank"
@@ -357,7 +197,7 @@ const Projects = () => {
                           >
                             <Youtube className="w-4 h-4 text-muted-foreground hover:text-red-500 transition-colors" />
                           </a>
-                        )}
+                        )} */}
                       </div>
                     </div>
 
@@ -365,7 +205,7 @@ const Projects = () => {
                       {project.description}
                     </p>
 
-                    {project.articleUrl && (
+                    {/* {project.articleUrl && (
                       <a
                         href={project.articleUrl}
                         target="_blank"
@@ -374,7 +214,7 @@ const Projects = () => {
                       >
                         Read more →
                       </a>
-                    )}
+                    )} */}
 
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-1.5 mt-3">

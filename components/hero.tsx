@@ -1,11 +1,10 @@
 // src/components/Hero.tsx
 "use client";
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { ArrowRight, Mail, Linkedin, Github, Twitter, Calendar, FileText, Brain, Code2 } from 'lucide-react';
+import { ArrowRight, Mail, Linkedin, Github, Twitter, Calendar, FileText } from 'lucide-react';
 import { HeroBackground } from './hero-background';
 
 // Instagram icon component
@@ -125,37 +124,26 @@ const socialLinks = [
 	{
 		icon: Github,
 		label: "GitHub",
-		href: "https://github.com/Mayank-glitch-cpu",
+		href: "https://github.com/vasupradharamac",
 	},
 	{
 		icon: Linkedin,
 		label: "LinkedIn",
-		href: "https://www.linkedin.com/in/mayankv10",
+		href: "https://www.linkedin.com/in/vasupradha-r/",
 	},
 	{
 		icon: InstagramIcon,
 		label: "Instagram",
-		href: "https://www.instagram.com/i_ammayankkkk_?igsh=cDQ0NWlnMnhmNHEy",
-	},
-	{
-		icon: YouTubeIcon,
-		label: "YouTube",
-		href: "https://www.youtube.com/@tech_savy_mayank4702",
+		href: "https://www.instagram.com/vasupradharamachandran/",
 	},
 	{
 		icon: XIcon,
 		label: "X",
-		href: "https://x.com/MayankV53812200",
-	},
-	{
-		icon: GoogleScholarIcon,
-		label: "Google Scholar",
-		href: "https://scholar.google.com/citations?user=ZiszgsIAAAAJ&hl=en",
-	},
+		href: "https://x.com/RVasupradha",
+	}
 ];
 
 const Hero: React.FC = () => {
-	const [resumeDialogOpen, setResumeDialogOpen] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
@@ -214,7 +202,7 @@ const Hero: React.FC = () => {
 							transition={{ duration: 0.5, delay: 0.2 }}
 						>
 							Hello, I'm{' '}
-							<span className="gradient-text">Mayank Vyas</span>
+							<span className="gradient-text">Vasupradha R</span>
 						</motion.h1>
 						<motion.p
 							className="text-xl text-muted-foreground flex items-center"
@@ -222,7 +210,7 @@ const Hero: React.FC = () => {
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.4 }}
 						>
-							Brewing Software with AI Solutions.
+							Building Agentic Solutions.
 							<HotCoffeeMug />
 						</motion.p>
 						<motion.div
@@ -244,61 +232,29 @@ const Hero: React.FC = () => {
 							transition={{ duration: 0.5, delay: 0.7 }}
 							className="flex flex-wrap gap-4"
 						>
-							<Button
-								variant="link"
-								className="p-0 h-auto text-base flex items-center gap-2"
-								onClick={() => setResumeDialogOpen(true)}
+							<a
+								href="https://drive.google.com/file/d/1smaS6f2zwVkQ7JN4rNrJEgVyPygAgeup/view?usp=sharing"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-2 text-base text-primary hover:underline underline-offset-4"
 							>
 								<FileText className="h-4 w-4" />
 								View Resume
-							</Button>
-							<Dialog open={resumeDialogOpen} onOpenChange={setResumeDialogOpen}>
-								<DialogContent className="sm:max-w-md">
-									<DialogHeader>
-										<DialogTitle>Choose Resume Focus</DialogTitle>
-										<DialogDescription>
-											Select the version that best matches what you&apos;re looking for.
-										</DialogDescription>
-									</DialogHeader>
-									<div className="flex flex-col gap-3 pt-2">
-										<Button
-											className="w-full justify-start gap-3 h-14 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700"
-											onClick={() => {
-												window.open('https://drive.google.com/file/d/18oqbveUFCdrqEJ43zn5WjywcEDEfiRCR/view?usp=sharing', '_blank');
-												setResumeDialogOpen(false);
-											}}
-										>
-											<Brain className="h-5 w-5 shrink-0" />
-											<div className="text-left">
-												<div className="font-semibold">ML / AI Focused</div>
-												<div className="text-xs opacity-80">Machine learning, LLMs, data science roles</div>
-											</div>
-										</Button>
-										<Button
-											className="w-full justify-start gap-3 h-14 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700"
-											onClick={() => {
-												window.open('https://drive.google.com/file/d/1jBfOtoAucMhpZfWb1JTshj0lGN-xuEP9/view?usp=sharing', '_blank');
-												setResumeDialogOpen(false);
-											}}
-										>
-											<Code2 className="h-5 w-5 shrink-0" />
-											<div className="text-left">
-												<div className="font-semibold">SDE Focused</div>
-												<div className="text-xs opacity-80">Software engineering, full-stack, backend roles</div>
-											</div>
-										</Button>
-									</div>
-								</DialogContent>
-							</Dialog>
+							</a>
 
-							<Button
-								size="lg"
-								className="rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
-								onClick={() => window.open('https://calendly.com/vyasmayank963/30min', '_blank')}
+							<a
+								href="https://calendly.com/vasupradha-1011/30min"
+								target="_blank"
+								rel="noopener noreferrer"
 							>
-								<Calendar className="mr-2 h-4 w-4" />
-								Let's Talk
-							</Button>
+								<Button
+									size="lg"
+									className="rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
+								>
+									<Calendar className="mr-2 h-4 w-4" />
+									Let's Talk
+								</Button>
+							</a>
 						</motion.div>
 					</motion.div>
 
@@ -311,8 +267,8 @@ const Hero: React.FC = () => {
 						{/* Outer glow for immersion effect */}
 						<div className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-br from-purple-500/20 via-blue-500/10 to-transparent blur-3xl" />
 						<svg
-							width="600"
-							height="600"
+							width="420"
+							height="420"
 							viewBox="0 0 200 200"
 							xmlns="http://www.w3.org/2000/svg"
 							className="relative z-10"

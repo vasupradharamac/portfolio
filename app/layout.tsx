@@ -9,8 +9,19 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Mayank Vyas - Portfolio',
-  description: 'Personal portfolio showcasing my projects and skills',
+  metadataBase: new URL('https://vasupradha.vercel.app'),
+  title: 'Vasupradha - Portfolio',
+  description: 'Building agentic solutions — Voice AI, multi-agent systems, and full-stack products.',
+  openGraph: {
+    title: 'Vasupradha R — Building Agentic Solutions',
+    description: 'Voice AI, multi-agent systems, and full-stack products built end-to-end.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vasupradha R — Building Agentic Solutions',
+    description: 'Voice AI, multi-agent systems, and full-stack products built end-to-end.',
+  },
 }
 
 export default function RootLayout({

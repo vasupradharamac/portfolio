@@ -8,7 +8,6 @@ import Projects from '@/components/projects'
 import Contact from '@/components/contact'
 import Dashboards from '@/components/dashboards'
 import YouTubeVideos from '@/components/youtube-videos'
-import Testimonials from '@/components/testimonials'
 import FeedbackWidget from '@/components/feedback-widget'
 import { Suspense } from 'react'
 
@@ -38,8 +37,7 @@ const Page = () => {
       <About />
       <GitHubContributions />
       <Education />
-      <Testimonials />
-      <Contact />
+<Contact />
       <FeedbackWidget />
     </main>
   )

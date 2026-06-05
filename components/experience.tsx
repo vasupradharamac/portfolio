@@ -2,93 +2,55 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, FileText, X, Presentation } from 'lucide-react'
+import { FileText, X, Presentation } from 'lucide-react'
 import Image from 'next/image'
 import { SectionBackground } from './section-background'
 
 const experiences = [
 	{
-		title: "ML Research Engineer, Multimodal Systems",
-		company: "Coral Labs",
-		logo: "/images/logos/Arizona_State_University_seal.svg.png",
-		location: "Tempe, Arizona",
-		startYear: "2025",
-		endYear: "Present",
-		url: "https://coral-lab-asu.github.io/",
-		highlights: [
-			"Engineered a distributed data pipeline over 160K+ tables (1.2TB) using Apache Spark and BM25 indexing with row-level chunking — reduced retrieval latency 3× and improved recall from 84% → 93% through custom tokenization and contrastive reranking",
-			"Built SEAR, a 3-stage meta-reasoning engine that dynamically routes LLM queries (CoT, PoT, Decomposition) — outperforming 13 baselines across 8 datasets with a 92.5% HCS score on GPT-4o, Gemini, and LLaMA 70B. Accepted AACL-IJCNLP 2024",
-			"Designed TRIM-QA, a noise-aware row pruning system using adaptive confidence thresholding — improving downstream LLM grounding with 93% Recall@10. Submitted to ACL Rolling Review"
-		],
-		publications: [
-			{
-				title: "No Universal Prompt: Unifying Reasoning through Adaptive Prompting for Temporal Table Reasoning",
-				url: "https://aclanthology.org/2025.ijcnlp-long.150/",
-				venue: "AACL 2025"
-			},
-			{
-				title: "TRIM-QA: Noise-Aware Row Pruning for Table QA",
-				url: "",
-				venue: "Coming Soon — arXiv"
-			}
-		]
+	  title: "Senior Backend Developer",
+	  company: "Isha Life Private Limited",
+	  linkedIn: "https://www.linkedin.com/company/isha-foundation",
+	  logo: "/images/logos/ishav1.png",
+	  location: "Coimbatore, India",
+	  startYear: "Apr 2024",
+	  endYear: "Dec 2025",
+	  highlights: [
+		"Built and deployed a RAG pipeline using LangChain and Pinecone, ingesting document archives and video transcripts to serve queries via a custom voice persona with a continuous user feedback loop for retrieval improvement",
+		"Built a distributed image processing pipeline with async orchestration achieving 60% throughput improvement for 10M+ annual participants",
+		"Unified four fragmented payment systems into a single fault-tolerant pipeline with CloudWatch observability, handling partial failure scenarios across 4 upstream systems",
+		"Reduced data retrieval latency from 150ms to sub-30ms for 30,000+ concurrent users",
+	  ],
 	},
 	{
-		title: "Founding Software Engineer",
-		company: "Mutu-AI",
-		logo: "/images/logos/Arizona_State_University_seal.svg.png",
-		location: "Tempe, Arizona (Self-Employed)",
-		startYear: "2025",
-		endYear: "Present",
-		url: "https://mutu.dev",
-		highlights: [
-			"Architected a hybrid search platform combining Elasticsearch (BM25), FAISS (ANN semantic search), and Neo4j (knowledge graph traversal) — serving <82ms median latency via GCP Cloud Run with 30+ FastAPI endpoints and a live waitlist across 2 countries",
-			"Built end-to-end: resume parsing, LLM-based job description alignment, explainable match scoring, and an invite system with custom email templates — deployed full-stack with React frontend and Dockerized backend",
-			"Achieved NDCG@10 = 0.81 across 1,283 job postings using LambdaMART reranking over hybrid BM25+SBERT retrieval. Submitted as first author to ACL 2026 and COLM 2026",
-			"Built JobSync-MCP Server, a real time Agentic Infrastructure that finds user profile aligned jobs and proactively applies on their behalf — achieving a 12% application success rate in early testing."
-		],
-			publications: [
-				{
-					title: "JobMatch-AI: Hybrid Search Engine using KG, Semantic Search and Explainable AI",
-					url: "https://arxiv.org/abs/2603.14558",
-					venue: "arXiv — March 2026 · Selected at ACL Demo 2026 (San Diego)"
-				}
-			],
-			website: "https://mutu.dev",
-			mcpPackage: "https://mayank-glitch-cpu.github.io/JobSync-Service/"
+	  title: "Backend Developer",
+	  company: "Keenai Global",
+	  linkedIn: "https://www.linkedin.com/company/keenaiglobal/",
+	  logo: "/images/logos/keenai logo.jpeg",
+	  location: "Bangalore, India",
+	  startYear: "Sep 2022",
+	  endYear: "Mar 2024",
+	  highlights: [
+		"Engineered a high-traffic event-driven scheduler using concurrent processing and fan-out patterns, enabling low-latency time-based automation across distributed workloads with 99.95% execution reliability",
+		"Owned the delivery of a real-time multi-channel notification engine from architecture to design within a microservice architecture, achieving 99.9% delivery success rate",
+		"Migrated infrastructure to a full IaC model using Terraform with automated CI/CD pipelines supporting multi-region cross-account deployments",
+		"Built an internal social platform actively used by the team, supporting post creation, editing, likes, shares, comments, and nested comments",
+	  ],
 	},
 	{
-		title: "Software Engineer, Machine Learning Architecture",
-		company: "Indian Institute of Information Technology",
-		logo: "/images/logos/IIITDM.jpeg",
-		location: "Chennai, TamilNadu",
-		startYear: "2022",
-		endYear: "2024",
-		url: "https://www.iiitdm.ac.in",
-		highlights: [
-			"Optimized C++ inference kernels for TinyML on Raspberry Pi — achieved 35% latency reduction (0.15ms), enabling real-time anomaly detection at 99.97% accuracy with live streaming to AWS",
-			"Designed predictive edge filtering that reduced fog-node data transmissions by 95% and energy consumption by 40% — deployed on LoRa hardware across smart agriculture field sites",
-			"Published 3 papers at IEEE/Springer (17+ citations) on scalable distributed IoT-ML inference — covering data aggregation, fog computing, and edge filtering algorithms"
-		],
-		publications: [
-			{
-				title: "Optimizing Kalman Filters for Data Integrity",
-				url: "https://ieeexplore.ieee.org/abstract/document/10278208",
-				venue: "IEEE"
-			},
-			{
-				title: "LoRa-based Fog Computing Framework",
-				url: "https://ieeexplore.ieee.org/abstract/document/10572197",
-				venue: "Springer"
-			},
-			{
-				title: "Data Aggregation for LoRa in Smart Agriculture",
-				url: "https://link.springer.com/chapter/10.1007/978-3-031-28451-9_4",
-				venue: "IEEE"
-			}
-		]
-	}
-]
+	  title: "Full Stack Developer Intern",
+	  company: "Defy — Y Combinator YC21",
+	  linkedIn: "https://www.linkedin.com/company/defyclub",
+	  logo: "/images/logos/defyclub_logo.jpeg",
+	  location: "Bangalore, India",
+	  startYear: "Nov 2021",
+	  endYear: "Feb 2022",
+	  highlights: [
+		"Built a CDM admin portal with RBAC and REST APIs serving 60,000+ users",
+		"Implemented investment allocation algorithms with sub-100ms performance in a high-velocity fintech startup",
+	  ],
+	},
+  ]
 
 const Experience = () => {
 	const [pptModal, setPptModal] = useState<{ isOpen: boolean; file: string; title: string }>({
@@ -209,17 +171,16 @@ const Experience = () => {
 
 								{/* Content Column */}
 								<div className="flex-1">
-									<a
-										href={exp.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="inline-flex items-center gap-1 group/link"
-									>
-										<h3 className="text-base font-medium text-foreground group-hover/link:text-primary transition-colors">
-											{exp.title} at {exp.company}
-										</h3>
-										<ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover/link:text-primary group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-all" />
-									</a>
+								<h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
+										{exp.title} at{' '}
+										<a
+											href={exp.linkedIn}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{exp.company}
+										</a>
+									</h3>
 									<p className="text-sm text-muted-foreground mt-1">
 										{exp.location}
 									</p>
@@ -234,7 +195,7 @@ const Experience = () => {
 									</ul>
 
 									{/* Publications */}
-									{exp.publications && exp.publications.length > 0 && (
+									{/* {exp.publications && exp.publications.length > 0 && (
 										<div className="mt-4 space-y-2">
 											<span className="text-xs text-muted-foreground font-medium">Publications</span>
 											<div className="space-y-2">
@@ -264,10 +225,10 @@ const Experience = () => {
 												})}
 											</div>
 										</div>
-									)}
+									)} */}
 
 									{/* Website / MCP Links */}
-									{(('website' in exp && exp.website) || ('mcpPackage' in exp && exp.mcpPackage)) && (
+									{/* {(('website' in exp && exp.website) || ('mcpPackage' in exp && exp.mcpPackage)) && (
 										<div className="mt-4 flex flex-wrap gap-3">
 											{'website' in exp && exp.website && (
 												<a
@@ -292,7 +253,7 @@ const Experience = () => {
 												</a>
 											)}
 										</div>
-									)}
+									)} */}
 
 									{/* PPT Presentation
 									{exp.ppt && (
